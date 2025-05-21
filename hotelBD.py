@@ -5,10 +5,23 @@ from db_functions import get_reservations, get_clients, get_available_rooms, add
 
 st.title("Gestion Hôtel - Interface")
 
-menu = ["Liste Réservations", "Liste Clients", "Chambres Disponibles", "Ajouter Client", "Ajouter Réservation"]
+menu = ["Accueil", "Liste Réservations", "Liste Clients", "Chambres Disponibles", "Ajouter Client", "Ajouter Réservation"]
 choice = st.sidebar.selectbox("Menu", menu)
 
-if choice == "Liste Réservations":
+if choice == "Accueil":
+    st.header("Bienvenue dans le système de gestion de l'hôtel 🏨")
+    st.write("""
+    Cette application vous permet de :
+    - Consulter la liste des réservations
+    - Gérer les clients
+    - Vérifier les chambres disponibles
+    - Ajouter de nouveaux clients
+    - Ajouter des réservations
+
+    Utilisez le menu à gauche pour naviguer entre les différentes sections.
+    """)
+
+elif choice == "Liste Réservations":
     st.header("Liste des réservations")
     reservations = get_reservations()
     df = pd.DataFrame(reservations, columns=["ID Réservation", "Date arrivée", "Date départ", "Client"])
